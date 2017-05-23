@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=C-Bit Core
+Comment=Connect to the C-Bit P2P Network
+Comment[de]=Verbinde mit dem C-Bit peer-to-peer Netzwerk
+Comment[fr]=C-Bit, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=C-Bit, eşten eşe kriptografik sanal para birimi
+Exec=C-Bit-qt %u
+Terminal=false
+Type=Application
+Icon=bitcoin128
+MimeType=x-scheme-handler/bitcoin;
+Categories=Office;Finance;
