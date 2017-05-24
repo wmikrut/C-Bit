@@ -7,17 +7,17 @@ define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2016)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[cbit]])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[c-bit]])
 AC_INIT([cbit],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/bitcoin/bitcoin/issues],[bitcoin],[https://bitcoincore.org/])
 AC_CONFIG_SRCDIR([src/main.cpp])
 AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-BITCOIN_DAEMON_NAME=cbitd
-BITCOIN_GUI_NAME=cbit-qt
-BITCOIN_CLI_NAME=cbit-cli
-BITCOIN_TX_NAME=cbit-tx
+BITCOIN_DAEMON_NAME=c-bitd
+BITCOIN_GUI_NAME=c-bit-qt
+BITCOIN_CLI_NAME=c-bit-cli
+BITCOIN_TX_NAME=c-bit-tx
 
 AC_CANONICAL_HOST
 
