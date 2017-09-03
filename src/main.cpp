@@ -1744,15 +1744,36 @@ bool IsInitialBlockDownload()
 
     LOCK(cs_main);
     if (latchToFalse.load(std::memory_order_relaxed))
+    {
+        LogPrintf("latchToFalse.load(std::memory_order_relaxed)");
         return false;
+    }
     if (fImporting || fReindex)
+    {
+        LogPrintf("Importing %s or reindexing %s", (fImporting ? "True" : "False"), (fReindex ? "True" : "False"));
         return true;
-    if (chainActive.Tip() == NULL)
+    }
+    //if (chainActive.Tip() == NULL)
+   //{
+   //     LogPrintf("chainActive.Tip == NULL");
+   //     return true;
+   // }
+   // if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork))
+   // {
+   //     LogPrintf("chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)");
+   //     return true;
+   // }
+    if (fCheckpointsEnabled && chainActive.Height() < Checkpoints::GetTotalBlocksEstimate(chainParams.Checkpoints()))
+    {
+        LogPrintf("fCheckpointsEnabled && chainActive.Height() < Checkpoints::GetTotalBlocksEstimate(chainParams.Checkpoints())");
         return true;
-    if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork))
-        return true;
+    }
     if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
+    {
+        LogPrintf("chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)");
         return true;
+    }
+    LogPrintf("Leaving InitialBlockDownload (latching to false)\n");
     latchToFalse.store(true, std::memory_order_relaxed);
     return false;
 }
